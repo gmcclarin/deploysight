@@ -1,7 +1,12 @@
+import { AppDataSource } from "./data-source";
 import app from "./app";
 
-const PORT = process.env.PORT || 5050;
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Database connected");
 
-app.listen(PORT, () => {
-  console.log(`DeploySight API running on port ${PORT}`);
-});
+    app.listen(process.env.API_PORT, () => {
+      console.log(`DeploySight API running on port ${process.env.API_PORT}`);
+    });
+  })
+  .catch((error) => console.error("DB connection error:", error));
