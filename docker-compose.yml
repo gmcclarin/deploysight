@@ -1,25 +1,18 @@
 version: "3.8"
 
 services:
-  backend:
-    build: ./backend
-    ports:
-      - "5050:5050"
-    env_file:
-      - .env
-    depends_on:
-      - db
-
-  frontend:
-    build: ./frontend
-    ports:
-      - "5173:5173"
-
   db:
     image: postgres:15
+    container_name: deploysight-db
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: deploysight
     ports:
-      - "5432:5432"
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
