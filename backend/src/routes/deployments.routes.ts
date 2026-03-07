@@ -1,21 +1,19 @@
 import { Router } from "express";
 import { AppDataSource } from "../data-source";
 import { Deployment } from "../entities/DeploymentEntity";
+import { DeploymentRepository } from "../db/deployment.repository";
 
 const router = Router();
-const repo = AppDataSource.getRepository(Deployment);
+const repo = new DeploymentRepository();
 
 router.get("/", async (_, res) => {
-  const deployments = await repo.find({
-    order: { deployed_at: "DESC" },
-  });
+  const deployments = await repo.find();
   res.json(deployments);
 });
 
 router.post("/", async (req, res) => {
-  const deployment = repo.create(req.body);
-  const result = await repo.save(deployment);
-  res.status(201).json(result);
+  const deployment = await repo.create(req.body);
+  res.status(201).json(deployment);
 });
 
 export default router;

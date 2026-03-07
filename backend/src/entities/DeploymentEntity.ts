@@ -5,29 +5,35 @@ import {
   CreateDateColumn,
 } from "typeorm";
 
-export type DeploymentStatus = "success" | "failed" | "in_progress";
-export type Environment = "dev" | "staging" | "prod";
-
 @Entity()
 export class Deployment {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
   @Column()
-  service_name!: string;
+  repo!: string;
 
   @Column()
-  environment!: Environment;
+  branch!: string;
 
   @Column()
-  status!: DeploymentStatus;
+  commitSha!: string;
 
   @Column()
-  commit_sha!: string;
+  environment!: string;
 
-  @Column({ type: "timestamp" })
-  deployed_at!: Date;
+  @Column()
+  status!: string;
 
   @CreateDateColumn()
-  created_at!: Date;
+  deployedAt!: Date;
 }
+
+
+// example
+// repo: deploysight
+// branch: main
+// commit: a3f9e21
+// environment: production
+// status: success
+// deployedAt: 2026-03-04T22:00

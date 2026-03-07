@@ -3,9 +3,9 @@ export type Environment = "dev" | "staging" | "prod";
 
 export interface Deployment {
   id: string;
-  service_name: string;
+  serviceName: string;
   environment: Environment;
   status: DeploymentStatus;
-  commit_sha: string;
-  deployed_at: Date;
+  commitSha: string;
+  deployedAt: Date;
 }
