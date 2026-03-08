@@ -3,12 +3,17 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  Unique,
 } from "typeorm";
 
+@Unique(["provider_deploy_id"])
 @Entity()
 export class Deployment {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
+
+  @Column()
+  providerDeployId!: string;
 
   @Column()
   repo!: string;
@@ -21,6 +26,9 @@ export class Deployment {
 
   @Column()
   environment!: string;
+
+  @Column()
+  source!: string;
 
   @Column()
   status!: string;

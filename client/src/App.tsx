@@ -1,12 +1,13 @@
-import Dashboard from './pages/Dashboard'
+import Dashboard from "./pages/Dashboard";
+import Header from "./layout/Header";
 
 function App() {
-
   return (
     <>
-   <Dashboard />
-   </>
-  )
+      <Header />
+      <Dashboard />
+    </>
+  );
 }
 
-export default App
+export default App;

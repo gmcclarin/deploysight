@@ -3,6 +3,7 @@ import { useGetDeployments } from "../api/deployments.api";
 import { DataGrid } from "@mui/x-data-grid";
 import type { GridColDef, GridRowParams } from "@mui/x-data-grid";
 import type { Deployment } from "../types/deployment";
+import DeploymentStats from "../components/DeploymentStats";
 
 export default function Dashboard() {
   const  { data: deployments, isLoading } = useGetDeployments();
@@ -53,6 +54,8 @@ export default function Dashboard() {
       <Typography variant="h4" gutterBottom>
         DeploySight Dashboard
       </Typography>
+
+      <DeploymentStats deployments={deployments ?? []} />
 
       <DataGrid
         rows={deployments ?? []}

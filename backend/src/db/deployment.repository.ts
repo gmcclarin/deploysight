@@ -19,7 +19,7 @@ export class DeploymentRepository {
 
     public async create(deploymentData: Omit<Deployment, "id" | "deployedAt">): Promise<Deployment> {
         try {
-            const deployment = this.typeOrmRepository.create(deploymentData);
+            const deployment = this.typeOrmRepository.create({...deploymentData, deployedAt: new Date()});
             return await this.typeOrmRepository.save(deployment);
         } catch ( error ) {
             throw error;
