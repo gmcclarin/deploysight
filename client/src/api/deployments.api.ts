@@ -11,6 +11,7 @@ export const getDeployments = async (): Promise<Deployment[]> => {
 export const useGetDeployments = () => {
   return useQuery({
     queryKey: ["deployments"],
-    queryFn: getDeployments
+    queryFn: getDeployments,
+    refetchInterval: 5000, // Refetch every 5 seconds for real-time updates
   });
 };
