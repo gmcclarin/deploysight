@@ -1,4 +1,4 @@
-import { api } from "../api";
+import { api } from "./lib";
 
 export interface HealthResponse {
   status: string;

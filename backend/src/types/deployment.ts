@@ -13,3 +13,10 @@ export interface Deployment {
   source?: string;
   deployedAt: Date;
 }
+
+export interface DeploymentStats {
+  total: number;
+  success: number;
+  failed: number;
+  deploying: number;
+}

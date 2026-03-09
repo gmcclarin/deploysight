@@ -55,7 +55,7 @@ export default function Dashboard() {
         DeploySight Dashboard
       </Typography>
 
-      <DeploymentStats deployments={deployments ?? []} />
+      <DeploymentStats />
 
       <DataGrid
         rows={deployments ?? []}

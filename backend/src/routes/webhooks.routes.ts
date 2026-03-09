@@ -18,6 +18,7 @@ router.post("/netlify", async (req, res) => {
       commitSha: payload.commit_ref || "unknown",
       environment: "production",
       status: payload.state === "ready" ? "success" : payload.state,
+      deployedAt: payload.created_at ? new Date(payload.created_at) : new Date(),
       source: "netlify",
     });
 

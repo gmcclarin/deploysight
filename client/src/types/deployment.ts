@@ -9,3 +9,10 @@ export interface Deployment {
   commitSha: string;
   deployedAt: Date;
 }
+
+export interface DeploymentStats {
+  total: number;
+  success: number;
+  failed: number;
+  deploying: number;
+}
