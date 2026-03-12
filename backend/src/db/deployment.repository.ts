@@ -1,5 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { Deployment } from "../entities/DeploymentEntity";
+import { CreateDeploymentDTO } from "../types/deployment";
 
 export class DeploymentRepository {
   private typeOrmRepository;
@@ -15,6 +16,7 @@ export class DeploymentRepository {
       throw error;
     }
   }
+
 
   public async findRecent(limit = 50): Promise<Deployment[]> {
     return this.typeOrmRepository.find({
@@ -34,7 +36,7 @@ export class DeploymentRepository {
 }
 
   public async create(
-    deploymentData: Omit<Deployment, "id">,
+    deploymentData: CreateDeploymentDTO,
   ): Promise<Deployment> {
     try {
       const deployment = this.typeOrmRepository.create({

@@ -31,3 +31,16 @@ export interface NormalizedDeployment {
   source: string;
   deployedAt: Date;
 }
+
+//======= route types ==========
+
+export type CreateDeploymentDTO = {
+  providerDeployId: string;
+  repo: string;
+  branch: string;
+  commitSha: string;
+  environment: string;
+  status: string;
+  source: string;
+  deployedAt?: Date;
+};
