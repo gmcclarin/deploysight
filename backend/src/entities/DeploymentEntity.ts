@@ -6,7 +6,7 @@ import {
   Unique,
 } from "typeorm";
 
-@Unique(["provider_deploy_id"])
+@Unique(["providerDeployId"])
 @Entity()
 export class Deployment {
   @PrimaryGeneratedColumn("uuid")
