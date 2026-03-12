@@ -1,4 +1,4 @@
-import { type NormalizedDeployment } from "../../types/deployment";
+import { NormalizedDeployment } from "../../../types/deployment";
 
 export interface WebhookParser {
   source: string;

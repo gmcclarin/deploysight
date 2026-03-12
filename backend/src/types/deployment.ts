@@ -20,3 +20,14 @@ export interface DeploymentStats {
   failed: number;
   deploying: number;
 }
+
+export interface NormalizedDeployment {
+  providerDeployId: string;
+  repo: string;
+  branch: string;
+  commitSha: string;
+  environment: string;
+  status: "success" | "failed" | "running";
+  source: string;
+  deployedAt: Date;
+}
