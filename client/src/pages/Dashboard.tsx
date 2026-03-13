@@ -37,15 +37,14 @@ export default function Dashboard() {
       field: "commitSha",
       headerName: "Commit",
       flex: 1,
-      valueGetter: (params: GridRowParams<Deployment>) => params.row.commitSha.slice(0, 7),
+      valueGetter: (params: GridRowParams<Deployment>) => params?.row?.commitSha?.slice(0, 7) ?? "-"
     },
 
     {
       field: "deployedAt",
       headerName: "Deployed",
       flex: 1,
-      valueGetter: (params:GridRowParams<Deployment>) =>
-        new Date(params.row.deployedAt).toLocaleString(),
+      valueGetter: (value) => value ? new Date(value).toLocaleString() : "-"
     },
   ];
 

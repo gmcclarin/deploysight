@@ -1,4 +1,4 @@
-import type { NormalizedDeployment } from "../../../../../client/src/types/deployment";
+import { type NormalizedDeployment } from "../../../types/deployment";
 import { type WebhookParser } from "../ports/webhookParser";
 
 export class NetlifyParser implements WebhookParser {
@@ -10,8 +10,8 @@ export class NetlifyParser implements WebhookParser {
       repo: payload.name || "unknown",
       branch: payload.branch || "unknown",
       commitSha: payload.commit_ref || "unknown",
-      environment: "production",
-      status: payload.state === "ready" ? "success" : "failed",
+      environment: payload.context ?? "production",
+      status: payload.state === "ready" ? "success" : payload.state === "building" ? "building" : "failed",
       source: this.source,
       deployedAt: new Date(payload.created_at ?? Date.now()),
     };

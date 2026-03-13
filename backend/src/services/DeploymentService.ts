@@ -16,7 +16,7 @@ export class DeploymentService {
       total: latest.length,
       success: latest.filter((d) => d.status === "success").length,
       failed: latest.filter((d) => d.status === "failed").length,
-      deploying: latest.filter((d) => d.status === "running").length,
+      deploying: latest.filter((d) => d.status === "building").length,
     };
   }
 }

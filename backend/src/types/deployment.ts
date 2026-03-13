@@ -1,5 +1,5 @@
-export type DeploymentStatus = "success" | "failed" | "in_progress";
-export type Environment = "dev" | "staging" | "prod";
+export type DeploymentStatus = "success" | "failed" | "building";
+export type Environment = "development" | "staging" | "production";
 
 export interface Deployment {
   id: string;
@@ -26,8 +26,8 @@ export interface NormalizedDeployment {
   repo: string;
   branch: string;
   commitSha: string;
-  environment: string;
-  status: "success" | "failed" | "running";
+  environment: Environment;
+  status: DeploymentStatus;
   source: string;
   deployedAt: Date;
 }
