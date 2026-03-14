@@ -49,7 +49,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <Container sx={{ mt: 4 }}>
+    <Container sx={{ my: 8   }}>
       <Typography variant="h4" gutterBottom>
         DeploySight Dashboard
       </Typography>
