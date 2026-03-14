@@ -29,8 +29,17 @@ export class DeploymentRepository {
   return this.typeOrmRepository
     .createQueryBuilder("deployment")
     .distinctOn(["deployment.repo", "deployment.environment"])
-    .orderBy("deployment.repo")
-    .addOrderBy("deployment.environment")
+    .orderBy("deployment.repo", "ASC")
+    .addOrderBy("deployment.environment", "ASC")
+    .addOrderBy(
+      `CASE 
+        WHEN deployment.status = 'success' THEN 1
+        WHEN deployment.status = 'deploying' THEN 2
+        WHEN deployment.status = 'failed' THEN 3
+        ELSE 4
+      END`,
+      "ASC"
+    )
     .addOrderBy("deployment.deployedAt", "DESC")
     .getMany();
 }
